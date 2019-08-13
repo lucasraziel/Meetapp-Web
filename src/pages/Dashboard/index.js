@@ -39,7 +39,7 @@ export default function Dashboard() {
                   locale: pt,
                 })}
               </span>
-              <Link to="/edit">
+              <Link to={`/edit/${meetup.id}`}>
                 <MdChevronRight size={24} color="#FFF" />
               </Link>
             </div>

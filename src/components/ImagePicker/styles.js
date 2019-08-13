@@ -6,6 +6,16 @@ export const Container = styled.div`
   width: 100%;
   label {
     display: block;
+    .preview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        height: 300px;
+        max-width: 600px;
+        background: #eee;
+      }
+    }
     .imagePicker {
       background: #19141f;
       height: 300px;
@@ -25,12 +35,7 @@ export const Container = styled.div`
     &:hover {
       opacity: 0.7;
     }
-    img {
-      height: 300px;
-      max-width: 600px;
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      background: #eee;
-    }
+
     input {
       display: none;
     }

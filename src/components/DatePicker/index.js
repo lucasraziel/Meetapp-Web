@@ -19,13 +19,20 @@ export default function DatePicker({ name, placeholder, ...rest }) {
         pickerRef.clear();
       },
     });
-  }, [fieldName, registerField]);
-
+    // eslint-disable-next-line
+  }, [ref.current, fieldName]);
+  let dateInitial = selected;
+  if (defaultValue) {
+    dateInitial = new Date(defaultValue);
+  }
+  if (selected) {
+    dateInitial = selected;
+  }
   return (
     <>
       <ReactDatePicker
         name={fieldName}
-        selected={selected}
+        selected={dateInitial}
         onChange={date => setSelected(date)}
         ref={ref}
         placeholderText={placeholder}

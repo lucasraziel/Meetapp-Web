@@ -5,7 +5,7 @@ import { MdAddCircleOutline } from 'react-icons/md';
 import { Form, Input } from '@rocketseat/unform';
 import pt from 'date-fns/locale/pt';
 import api from '~/services/api';
-import history from '~/services/history'
+import history from '~/services/history';
 
 import { Container } from './styles';
 
@@ -20,7 +20,7 @@ export default function New() {
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
-        <ImagePicker />
+        <ImagePicker name="file_id" />
         <Input name="title" placeholder="Título" />
         <Input multiline name="description" placeholder="Descrição" />
         <DatePicker
@@ -38,7 +38,7 @@ export default function New() {
         <div className="buttonSubmit">
           <button type="submit">
             <MdAddCircleOutline size={24} color="#fff" />
-            Atualizar perfil
+            Criar Meetup
           </button>
         </div>
       </Form>

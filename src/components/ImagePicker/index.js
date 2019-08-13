@@ -5,8 +5,8 @@ import api from '~/services/api';
 
 import { Container } from './styles';
 
-export default function AvatarInput() {
-  const { defaultValue, registerField } = useField('banner');
+export default function ImagePicker({ source }) {
+  const { defaultValue, registerField } = useField('file_id');
 
   const [file, setFile] = useState(defaultValue && defaultValue.id);
   const [preview, setPreview] = useState(defaultValue && defaultValue.url);
@@ -21,7 +21,16 @@ export default function AvatarInput() {
         path: 'dataset.file',
       });
     }
-  }, [ref, registerField]);
+  }, [defaultValue, ref, registerField, source]);
+
+  useEffect(() => {
+    if (source) {
+      setPreview(source);
+    }
+    if (defaultValue) {
+      setFile(defaultValue);
+    }
+  }, [defaultValue, source]);
 
   async function handleChange(e) {
     const data = new FormData();
@@ -33,14 +42,17 @@ export default function AvatarInput() {
     const { id, url } = response.data;
 
     setFile(id);
+
     setPreview(url);
   }
 
   return (
     <Container>
-      <label htmlFor="banner">
+      <label htmlFor="file">
         {preview ? (
-          <img src={preview} alt="" />
+          <div className="preview">
+            <img src={preview} alt="" />
+          </div>
         ) : (
           <div className="imagePicker">
             <div>
@@ -52,7 +64,7 @@ export default function AvatarInput() {
 
         <input
           type="file"
-          id="banner"
+          id="file"
           accept="image/*"
           data-file={file}
           onChange={handleChange}
