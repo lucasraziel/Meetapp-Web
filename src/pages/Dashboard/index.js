@@ -31,19 +31,20 @@ export default function Dashboard() {
       </header>
       <Meetups>
         {meetups.map(meetup => (
-          <li>
-            <strong>{meetup.title}</strong>
-            <div>
-              <span>
-                {format(parseISO(meetup.date), "dd' de 'MMMM', às 'HH':'mm", {
-                  locale: pt,
-                })}
-              </span>
-              <Link to={`/edit/${meetup.id}`}>
+          <Link to={`/details/${meetup.id}`}>
+            <li>
+              <strong>{meetup.title}</strong>
+              <div>
+                <span>
+                  {format(parseISO(meetup.date), "dd' de 'MMMM', às 'HH':'mm", {
+                    locale: pt,
+                  })}
+                </span>
+
                 <MdChevronRight size={24} color="#FFF" />
-              </Link>
-            </div>
-          </li>
+              </div>
+            </li>
+          </Link>
         ))}
       </Meetups>
     </Container>

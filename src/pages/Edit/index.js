@@ -18,14 +18,11 @@ export default function Edit({ match }) {
   useEffect(() => {
     async function loadMeetup() {
       const { id } = match.params;
-      console.tron.log(id);
       const response = await api.get('/meetups');
-      console.tron.log(response.data);
       const meetupResponse = await response.data.find(
         meetupFilter => meetupFilter.id === Number.parseInt(id)
       );
       meetupResponse.date = new Date(parseISO(meetupResponse.date));
-      console.tron.log(meetupResponse);
 
       setMeetup(meetupResponse);
     }
@@ -35,7 +32,7 @@ export default function Edit({ match }) {
   async function handleSubmit(data) {
     console.tron.log(data);
     await api.put(`meetups/${meetup.id}`, data);
-    history.push('/');
+    history.push('/dashboard');
   }
 
   return (

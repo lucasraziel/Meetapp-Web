@@ -3,15 +3,18 @@ import { darken } from 'polished';
 
 export const Container = styled.div`
   max-width: 940px;
-  margin: 0 auto;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
-  header {
-    margin-top: 30px;
+  div {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    button {
+    strong {
+      color: #fff;
+      font-size: 28px;
+    }
+    button.delete {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -28,44 +31,43 @@ export const Container = styled.div`
         background: ${darken(0.03, '#F94D6A')};
       }
     }
-    strong {
+    button.edit {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 28px;
+      padding: 0 20px;
+      height: 44px;
+      background: #4dbaf9;
       color: #fff;
-      font-size: 24px;
-      margin: 0 15px;
+      border: 0;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: background 0.2s;
+      &:hover {
+        background: ${darken(0.03, '#4dbaf9')};
+      }
     }
   }
-`;
-
-export const Meetups = styled.ul`
-  display: grid;
-  grid-gap: 15px;
-  margin-top: 30px;
-
-  li {
+  img {
+    margin: 50px 0 20px 0;
+    align-self: center;
+    height: 300px;
+  }
+  p {
+    color: #fff;
+    font-size: 16px;
+  }
+  .bottom {
     display: flex;
-    justify-content: space-between;
-    background: #18161f;
-    height: 44px;
+    justify-content: flex-start;
     align-items: center;
-    padding: 0 15px;
-    border-radius: 4px;
-    strong {
-      color: #fff;
-      font-size: 18px;
-    }
-    div {
+    span {
       display: flex;
-      justify-content: end;
       align-items: center;
-      span {
-        color: #999;
-        font-size: 16px;
-      }
-      a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+      color: #999;
+      size: 14px;
+      margin: 10px 20px 0 0;
     }
   }
 `;

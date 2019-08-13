@@ -3,6 +3,7 @@ import React from 'react';
 import { MdAddCircleOutline } from 'react-icons/md';
 
 import { Form, Input } from '@rocketseat/unform';
+import { addHours } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import api from '~/services/api';
 import history from '~/services/history';
@@ -14,8 +15,9 @@ import ImagePicker from '~/components/ImagePicker';
 
 export default function New() {
   async function handleSubmit(data) {
+    console.tron.log(data);
     await api.post('meetups', data);
-    history.push('/');
+    history.push('/dashboard');
   }
   return (
     <Container>
@@ -31,7 +33,7 @@ export default function New() {
           timeFormat="HH:mm"
           timeIntervals={30}
           dateFormat="dd/MM/yyyy HH:mm"
-          minDate={new Date()}
+          minDate={addHours(new Date(), 1)}
         />
         <Input name="place" placeholder="Local" />
 
