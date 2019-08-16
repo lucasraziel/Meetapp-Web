@@ -13,6 +13,16 @@ export default function Dashboard() {
     async function loadMeetups() {
       const response = await api.get('meetups');
 
+      response.data.map(meetup => {
+        meetup.formatedDate = format(
+          parseISO(meetup.date),
+          "dd' de 'MMMM', às 'HH':'mm",
+          {
+            locale: pt,
+          }
+        );
+      });
+
       setMeetups(response.data);
     }
 
@@ -35,11 +45,7 @@ export default function Dashboard() {
             <li>
               <strong>{meetup.title}</strong>
               <div>
-                <span>
-                  {format(parseISO(meetup.date), "dd' de 'MMMM', às 'HH':'mm", {
-                    locale: pt,
-                  })}
-                </span>
+                <span>{meetup.formatedDate}</span>
 
                 <MdChevronRight size={24} color="#FFF" />
               </div>

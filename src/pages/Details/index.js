@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { MdEdit, MdDelete, MdPlace, MdDateRange } from 'react-icons/md';
+import { toast } from 'react-toastify';
 
 import { parseISO, format } from 'date-fns';
 import pt from 'date-fns/locale/pt';
@@ -42,8 +43,13 @@ export default function Details({ match }) {
     );
 
     if (confirm) {
-      await api.delete(`meetups/${meetupId}`);
-      history.push('/dashboard');
+      try {
+        await api.delete(`meetups/${meetupId}`);
+        history.push('/dashboard');
+      } catch (error) {
+        console.tron.log(error);
+        toast.error('Falha ao deletar Meetup');
+      }
     }
   }
   return (

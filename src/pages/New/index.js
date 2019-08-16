@@ -4,6 +4,7 @@ import { MdAddCircleOutline } from 'react-icons/md';
 
 import { Form, Input } from '@rocketseat/unform';
 import { addHours } from 'date-fns';
+import { toast } from 'react-toastify';
 import pt from 'date-fns/locale/pt';
 import api from '~/services/api';
 import history from '~/services/history';
@@ -16,8 +17,13 @@ import ImagePicker from '~/components/ImagePicker';
 export default function New() {
   async function handleSubmit(data) {
     console.tron.log(data);
-    await api.post('meetups', data);
-    history.push('/dashboard');
+    try {
+      await api.post('meetups', data);
+      history.push('/dashboard');
+    } catch (error) {
+      console.tron.log(error);
+      toast.error('Falha na criação da Meetup, verifique seus dados');
+    }
   }
   return (
     <Container>

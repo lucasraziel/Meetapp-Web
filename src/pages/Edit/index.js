@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { MdAddCircleOutline } from 'react-icons/md';
+import { toast } from 'react-toastify';
 
 import { Form, Input } from '@rocketseat/unform';
 import pt from 'date-fns/locale/pt';
@@ -30,9 +31,14 @@ export default function Edit({ match }) {
     loadMeetup();
   }, [match.params]);
   async function handleSubmit(data) {
-    console.tron.log(data);
-    await api.put(`meetups/${meetup.id}`, data);
-    history.push('/dashboard');
+    try {
+      console.tron.log(data);
+      await api.put(`meetups/${meetup.id}`, data);
+      history.push('/dashboard');
+    } catch (error) {
+      console.tron.log(error);
+      toast.error('Falha na criação da Meetup, verifique seus dados');
+    }
   }
 
   return (
