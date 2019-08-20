@@ -32,18 +32,15 @@ export default function Edit({ match }) {
   }, [match.params]);
   async function handleSubmit(data) {
     try {
-      console.tron.log(data);
       await api.put(`meetups/${meetup.id}`, data);
       history.push('/dashboard');
     } catch (error) {
-      console.tron.log(error);
       toast.error('Falha na criação da Meetup, verifique seus dados');
     }
   }
 
   return (
     <Container>
-      {console.tron.log(meetup)}
       <Form onSubmit={handleSubmit} initialData={meetup}>
         {meetup.file ? (
           <ImagePicker name="file_id" source={meetup.file.url} />

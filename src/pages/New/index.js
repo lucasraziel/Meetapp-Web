@@ -16,12 +16,10 @@ import ImagePicker from '~/components/ImagePicker';
 
 export default function New() {
   async function handleSubmit(data) {
-    console.tron.log(data);
     try {
       await api.post('meetups', data);
       history.push('/dashboard');
     } catch (error) {
-      console.tron.log(error);
       toast.error('Falha na criação da Meetup, verifique seus dados');
     }
   }

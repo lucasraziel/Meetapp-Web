@@ -18,7 +18,6 @@ export default function Details({ match }) {
       const meetupResponse = await response.data.find(
         meetupFilter => meetupFilter.id === Number.parseInt(id)
       );
-      console.tron.log(meetupResponse);
       meetupResponse.date = format(
         parseISO(meetupResponse.date),
         "dd' de 'MMMM', às 'HH':'mm",
@@ -47,7 +46,6 @@ export default function Details({ match }) {
         await api.delete(`meetups/${meetupId}`);
         history.push('/dashboard');
       } catch (error) {
-        console.tron.log(error);
         toast.error('Falha ao deletar Meetup');
       }
     }
