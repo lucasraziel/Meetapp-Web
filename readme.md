@@ -17,14 +17,14 @@ To insall, you should do git clone command
 ```
 git clone git@github.com:lucasraziel/Meetapp-Web.git meetapp-web
 
+```
+
 And in the meetapp-web folder, do a yarn command to update the packages
 
 ```
-
 yarn
 
 ```
-
 
 then, just start the server development with:
 
@@ -48,4 +48,7 @@ Now you should be to start the app in browser throuh the address "http://localho
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+```
+
 ```
